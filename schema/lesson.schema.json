@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Daily Tanya lesson",
+  "type": "object",
+  "required": ["id", "calendar", "ref", "teaching"],
+  "properties": {
+    "id": { "type": "string", "description": "Stable key, e.g. 5786-elul-04" },
+    "civil_date": { "type": "string", "format": "date" },
+    "hebrew": {
+      "type": "object",
+      "properties": {
+        "year": { "type": "integer" },
+        "month": { "type": "string" },
+        "day": { "type": "integer" },
+        "display": { "type": "string" }
+      }
+    },
+    "calendar": { "enum": ["regular", "leap"] },
+    "ref": {
+      "type": "object",
+      "properties": {
+        "part": { "type": "string" },
+        "unit": { "type": "string" },
+        "unit_num": { "type": "integer" },
+        "daily_part": { "type": "integer" },
+        "start_he": { "type": "string" },
+        "sefaria": { "type": "string" }
+      }
+    },
+    "links": {
+      "type": "object",
+      "additionalProperties": { "type": "string" }
+    },
+    "teaching": { "type": "string", "description": "Original Manis-voice commentary" },
+    "one_liner": { "type": "string" },
+    "key_terms": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "term": { "type": "string" },
+          "gloss": { "type": "string" }
+        }
+      }
+    },
+    "discussion_questions": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  }
+}
